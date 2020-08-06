@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 // Matrial UI imports
 import {
@@ -20,7 +20,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 // Local Imports
 import { fetchUsers, editUser, deleteUser } from "./redux/actions";
-import { userNameSelector } from "./redux/selectors";
+
 // CSS Imports
 import "./App.css";
 
@@ -32,9 +32,7 @@ const App = ({ fetchUsers, editUser, users, deleteUser }) => {
   useEffect(() => {
     fetchUsers();
   }, []);
-  console.log("one");
-  const { usernames } = useSelector(userNameSelector());
-  console.log(usernames, "USR");
+
   return (
     <Container className='App'>
       <h1 className='heading-txt'>
@@ -111,19 +109,3 @@ const mapDispatchToProps = { fetchUsers, editUser, deleteUser };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-//  <Button
-//                     className='my-btn'
-//                     variant='contained'
-//                     color='primary'
-//                     onClick={() => addValue(user.id)}
-//                   >
-//                     Edit
-//                   </Button>
-//                   <Button
-//                     className='my-btn'
-//                     variant='contained'
-//                     color='secondary'
-//                     onClick={() => deleteUser(user.id)}
-//                   >
-//                     DELETE
-//                   </Button>
